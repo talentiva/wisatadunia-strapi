@@ -7,12 +7,15 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "test": "mocha"
   },
   "devDependencies": {},
   "dependencies": {
+    "chai": "^4.2.0",
     "dotenv": "^8.2.0",
     "knex": "latest",
+    "mocha": "^6.2.2",
     "sqlite3": "latest",
     "strapi": "3.0.0-beta.17.4",
     "strapi-admin": "3.0.0-beta.17.4",

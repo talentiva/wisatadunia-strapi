@@ -3,15 +3,27 @@ image: node:latest
 stages:
   - build
   - test
+  - deploy
 
 cache:
   paths:
     - node_modules/
 
-npm_ci:
+npm_install:
   stage: build
   script:
-    - npm ci
+    - npm install
   artifacts:
     paths:
       - node_modules/
+
+npm_test:
+  stage: test
+  script:
+    - npm test
+
+deploy_ec2:
+  stage: deploy
+  script:
+    - ssh-add <(echo "$PRIVATE_KEY")
+    - ssh -o StrictHostKeyChecking=no ubuntu@"$EC2_SERVER" 'cd wisatadunia-ceefour && git pull'
